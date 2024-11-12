@@ -61,7 +61,7 @@ BookExchange is a web application that allows users to manage books, exchange re
 1. *Clone the repository:*
 
    bash
-   git clone https://github.com/your-username/bookexchange.git
+   git clone [https://github.com/your-username/bookexchange.git](https://github.com/marrimounika/FullStack-Assignment1/tree/main)
    cd bookexchange
    
 
@@ -107,7 +107,7 @@ BookExchange is a web application that allows users to manage books, exchange re
 ---
 
 ## *Project Structure*
-
+'''
 plaintext
 bookexchange/
 ├── app/
@@ -129,7 +129,7 @@ bookexchange/
 ├── README.md                # Project README
 └── run.py                   # Entry point to run the app
 
-
+'''
 ---
 
 ## *Contributing*
