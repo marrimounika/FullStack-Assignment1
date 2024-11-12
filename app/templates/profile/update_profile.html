@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Update Profile</h2>
+
+    <!-- Profile Update Section -->
+    <form method="POST" enctype="multipart/form-data">
+        {{ form_profile.hidden_tag() }}
+        <h3>Profile Details</h3>
+        <div class="form-group">
+            {{ form_profile.username.label(class="form-label") }}
+            {{ form_profile.username(class="form-control", placeholder="Enter your username") }}
+            {% for error in form_profile.username.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form_profile.reading_preferences.label(class="form-label") }}
+            {{ form_profile.reading_preferences(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form_profile.favorite_genres.label(class="form-label") }}
+            {{ form_profile.favorite_genres(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form_profile.books_wanted.label(class="form-label") }}
+            {{ form_profile.books_wanted(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form_profile.avatar.label(class="form-label") }}
+            {{ form_profile.avatar(class="form-control-file") }}
+        </div>
+        <button type="submit" name="submit_profile" class="btn btn-primary">Update Profile</button>
+    </form>
+
+    <hr>
+
+    <!-- Password Update Section -->
+    <form method="POST">
+        {{ form_password.hidden_tag() }}
+        <h3>Change Password</h3>
+        <div class="form-group">
+            {{ form_password.current_password.label(class="form-label") }}
+            {{ form_password.current_password(class="form-control", placeholder="Enter your current password") }}
+            {% for error in form_password.current_password.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form_password.new_password.label(class="form-label") }}
+            {{ form_password.new_password(class="form-control", placeholder="Enter your new password") }}
+            {% for error in form_password.new_password.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form_password.confirm_new_password.label(class="form-label") }}
+            {{ form_password.confirm_new_password(class="form-control", placeholder="Confirm your new password") }}
+            {% for error in form_password.confirm_new_password.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <button type="submit" name="submit_password" class="btn btn-primary">Update Password</button>
+    </form>
+{% endblock %}

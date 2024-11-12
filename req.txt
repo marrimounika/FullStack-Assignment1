@@ -1,0 +1,16 @@
+Flask
+Flask-Login
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Mail
+email-validator
+Werkzeug
+itsdangerous>=2.0.0
+mssql-cli
+chromadb
+djangorestframework
+django-cors-headers
+jupyterlab
+nbconvert
+spacy==3.7.5

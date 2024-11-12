@@ -1,0 +1,18 @@
+<!-- app/templates/messages/send_message.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h2>Send Message to {{ receiver.username }}</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content(class="form-control", rows="5", placeholder="Type your message here...") }}
+            {% for error in form.content.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+        <a href="{{ url_for('messages.inbox') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+    
+    
+{% endblock %}

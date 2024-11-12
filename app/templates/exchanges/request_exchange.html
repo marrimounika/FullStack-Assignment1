@@ -1,0 +1,26 @@
+<!-- app/templates/exchanges/request_exchange.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Request Exchange for "{{ book.title }}"</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.delivery_method.label(class="form-label") }}
+            {{ form.delivery_method(class="form-control", placeholder="e.g., Pickup, Shipping") }}
+            {% for error in form.delivery_method.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.exchange_duration.label(class="form-label") }}
+            {{ form.exchange_duration(class="form-control", placeholder="e.g., 2 weeks") }}
+            {% for error in form.exchange_duration.errors %}
+                <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+        <a href="{{ url_for('books.search_books') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+    
+{% endblock %}

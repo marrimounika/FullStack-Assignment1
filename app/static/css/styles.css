@@ -1,0 +1,131 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa; /* Light Gray Background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px 0;
+}
+
+/* Navbar Styles */
+.navbar-nav .nav-link {
+    color: #2e8b57; /* Sea Green */
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #1e5f3b; /* Darker Sea Green */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    font-weight: bold;
+    color: #1e5f3b; /* Darker Sea Green */
+}
+
+/* Flash Messages */
+.alert {
+    border-radius: 0.25rem;
+    margin-top: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40; /* Dark Background */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2e8b57; /* Sea Green */
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: #495057; /* Dark Gray */
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa; /* Light Gray for Alternating Rows */
+}
+
+/* Buttons */
+.btn-accept {
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-accept:hover {
+    background-color: #218838; /* Darker Green */
+}
+
+.btn-reject {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-reject:hover {
+    background-color: #c82333; /* Darker Red */
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    margin-bottom: 0;
+    padding: 8px 15px;
+    background-color: #f8f9fa; /* Subtle Gray Background */
+    border-radius: 4px;
+}
+
+h2, h3 {
+    color: #343a40;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    .btn-accept, .btn-reject {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+}

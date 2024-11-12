@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Your Profile</h1>
+    <div class="card mt-3">
+        <div class="card-body text-center">
+            {% if profile and profile.avatar %}
+                <img src="{{ url_for('static', filename='uploads/profile/' ~ profile.avatar) }}" alt="Avatar" class="img-thumbnail" width="150" height="150">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/1.jpeg') }}" alt="Default Avatar" class="img-thumbnail" width="150" height="150">
+            {% endif %}
+            <h5 class="card-title mt-3">{{ current_user.username }}</h5>
+            <p class="card-text"><strong>Reading Preferences:</strong> {{ profile.reading_preferences or "Not specified" }}</p>
+            <p class="card-text"><strong>Favorite Genres:</strong> {{ profile.favorite_genres or "Not specified" }}</p>
+            <p class="card-text"><strong>Books Wanted:</strong> {{ profile.books_wanted or "Not specified" }}</p>
+        </div>
+    </div>
+    <a href="{{ url_for('profile.update_profile') }}" class="btn btn-primary mt-3">Update Profile</a>
+</div>
+{% endblock %}

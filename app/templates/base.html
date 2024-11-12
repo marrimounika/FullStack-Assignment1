@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else "BookExchange" }}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('books.search_books') }}">BookExchange</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'books.list_books' %}active{% endif %}" href="{{ url_for('books.list_books') }}">My Books</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'books.search_books' %}active{% endif %}" href="{{ url_for('books.search_books') }}">Search Books</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'exchanges.view_requests' %}active{% endif %}" href="{{ url_for('exchanges.view_requests') }}">Exchange Requests</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'messages.inbox' %}active{% endif %}" href="{{ url_for('messages.inbox') }}">Inbox</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                                {% if current_user.profile and current_user.profile.avatar %}
+                                    <img src="{{ url_for('static', filename='images/' ~ current_user.profile.avatar) }}" alt="Avatar" class="rounded-circle" width="30" height="30">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='images/1.jpeg') }}" alt="Avatar" class="rounded-circle" width="30" height="30">
+                                {% endif %}
+                                {{ current_user.username }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ url_for('profile.view_profile') }}">Your Profile</a>
+                                <a class="dropdown-item" href="{{ url_for('profile.update_profile') }}">Update Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <div class="container mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('messages.inbox') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ title if title else "Current Page" }}</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Dynamic Content -->
+    <div class="container mt-5">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 bg-light py-3">
+        <div class="container text-center">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="{{ url_for('messages.inbox') }}">Home</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('books.search_books') }}">Search Books</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('profile.view_profile') }}">Profile</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+            </ul>
+            <p>&copy; 2024 BookExchange. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

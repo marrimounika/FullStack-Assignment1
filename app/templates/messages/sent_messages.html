@@ -1,0 +1,17 @@
+<!-- app/templates/messages/sent_messages.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h2>Sent Messages</h2>
+    {% if messages %}
+        <ul class="list-group">
+            {% for msg in messages %}
+                <li class="list-group-item">
+                    <strong>To: {{ msg.receiver.username }}</strong> <small class="text-muted">{{ msg.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                    <p>{{ msg.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have not sent any messages yet.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card mb-4">
+        {% if book.cover_image %}
+            <img src="{{ url_for('static', filename='uploads/books/' ~ book.cover_image) }}" class="card-img-top" alt="Cover Image">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/default_book_cover.jpg') }}" class="card-img-top" alt="Default Cover Image">
+        {% endif %}
+        <div class="card-body">
+            <h3 class="card-title">{{ book.title }}</h3>
+            <p class="card-text"><strong>Author:</strong> {{ book.author }}</p>
+            <p class="card-text"><strong>Genre:</strong> {{ book.genre }}</p>
+            <p class="card-text"><strong>Condition:</strong> {{ book.condition }}</p>
+            <p class="card-text"><strong>Availability:</strong> {{ book.availability_status.capitalize() }}</p>
+            <p class="card-text"><strong>Location:</strong> {{ book.location }}</p>
+            <p class="card-text"><strong>Added by:</strong> {{ book.user.username }}</p>
+            <a href="{{ url_for('books.edit_book', book_id=book.id) }}" class="btn btn-primary">Edit</a>
+            <form action="{{ url_for('books.delete_book', book_id=book.id) }}" method="POST" style="display:inline;">
+                {{ form.hidden_tag() }}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <a href="{{ url_for('books.list_books') }}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+{% endblock %}

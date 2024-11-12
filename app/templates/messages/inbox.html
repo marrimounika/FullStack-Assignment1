@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Inbox</h2>
+    {% if messages %}
+        <ul class="list-group">
+            {% for msg in messages %}
+                <li class="list-group-item">
+                    <strong>From: <a href="{{ url_for('messages.conversation', other_user_id=msg.sender.id) }}">{{ msg.sender.username }}</a></strong>
+                    <small class="text-muted">{{ msg.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                    <p>{{ msg.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no messages in your inbox.</p>
+    {% endif %}
+{% endblock %}
