@@ -61,8 +61,8 @@ BookExchange is a web application that allows users to manage books, exchange re
 1. *Clone the repository:*
 
    ```
-   git clone https://github.com/marrimounika/FullStack-Assignment1/tree/main
-   cd bookexchange
+   git clone https://github.com/marrimounika/FullStack-Assignment1/
+   cd FullStack-Assignment1
    ```
 
 2. *Set up a virtual environment:*
