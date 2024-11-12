@@ -60,54 +60,55 @@ BookExchange is a web application that allows users to manage books, exchange re
 
 1. *Clone the repository:*
 
-   bash
-   git clone [https://github.com/your-username/bookexchange.git](https://github.com/marrimounika/FullStack-Assignment1/tree/main)
+   ```
+   git clone [https://github.com/marrimounika/FullStack-Assignment1/tree/main](https://github.com/marrimounika/FullStack-Assignment1/tree/main)
    cd bookexchange
-   
+   ```
 
 2. *Set up a virtual environment:*
 
-   bash
+   ```
    python -m venv venv
    source venv/bin/activate  # For Windows: venv\Scripts\activate
-   
+   ```
 
 3. *Install dependencies:*
 
-   bash
+   ```
    pip install -r requirements.txt
-   
+   ```
 
 4. *Set up environment variables:*
 
    Create a .env file in the root directory and configure the following:
    env
+   ```
    SECRET_KEY=your_secret_key
    SQLALCHEMY_DATABASE_URI=sqlite:///app.db
    FLASK_ENV=development
    UPLOAD_FOLDER=static/uploads
-   
+   ```
 
-5. *Run database migrations:*
+6. *Run database migrations:*
 
-   bash
+   ```
    flask db upgrade
-   
+   ```
 
-6. *Run the application:*
+7. *Run the application:*
 
-   bash
+   ```
    flask run
-   
+   ```
 
-7. *Access the application:*
+8. *Access the application:*
 
    Open your browser and go to http://127.0.0.1:5000.
 
 ---
 
 ## *Project Structure*
-'''
+```
 plaintext
 bookexchange/
 ├── app/
@@ -128,8 +129,8 @@ bookexchange/
 ├── config.py                # Configuration settings
 ├── README.md                # Project README
 └── run.py                   # Entry point to run the app
+```
 
-'''
 ---
 
 ## *Contributing*
